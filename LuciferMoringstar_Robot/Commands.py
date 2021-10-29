@@ -1,5 +1,6 @@
 import os
 import logging
+import random
 from pyrogram import Client, filters
 from pyrogram import StopPropagation
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
@@ -13,7 +14,38 @@ from pyrogram.errors import UserNotParticipant
 logger = logging.getLogger(__name__)
 
 LOG_CHANNEL = BROADCAST_CHANNEL
-
+PHOTO = [ 
+"https://telegra.ph/file/dc8ba0ea646d08d9a709c.jpg",
+"https://telegra.ph/file/2e6ea826f3d889ef93245.jpg",
+"https://telegra.ph/file/58ca70483756b16246e17.jpg",
+"https://telegra.ph/file/97a3d0cd881ca31536955.jpg",
+"https://telegra.ph/file/81248d1085cecb2dd446e.jpg",
+"https://telegra.ph/file/fced218c5d370ddc3ca5c.jpg",
+"https://telegra.ph/file/0a86d505f65983f163398.jpg",
+"https://telegra.ph/file/af210a9b936b56206113b.jpg",
+"https://telegra.ph/file/31c72074b49b4dbaff7c0.jpg",
+"https://telegra.ph/file/89b42cc2f1deab21c93c8.jpg",
+"https://telegra.ph/file/dfe600ae87e860b112e27.jpg",
+"https://telegra.ph/file/b52598faf7958772f5afc.jpg",
+"https://telegra.ph/file/84e96e4781cfe1dd626cc.jpg",
+"https://telegra.ph/file/4cf06b723b7a1384554d3.jpg",
+"https://telegra.ph/file/246cae78cb16268345bc3.jpg",
+"https://telegra.ph/file/90a7b7b7ba167258df13a.jpg",
+"https://telegra.ph/file/d16ca115925df3f227e4c.jpg",
+"https://telegra.ph/file/65ea75b11fd20b5c2128f.jpg",
+"https://telegra.ph/file/cf39c252ab8680dc7f572.jpg",
+"https://telegra.ph/file/9bf2cfc4f92537012ad26.jpg",
+"https://telegra.ph/file/2a5c06cc6a550676f9e02.jpg",
+"https://telegra.ph/file/5b8084772bb4e3719736e.jpg",
+"https://telegra.ph/file/e1f576c9696af1c9733b9.jpg",
+"https://telegra.ph/file/d1d555467e54fce766756.jpg",
+"https://telegra.ph/file/e53ee68f83f959777d8b8.jpg",
+"https://telegra.ph/file/52e8576d0e418ddb5ba73.jpg",
+"https://telegra.ph/file/5ffdebd9ffbc6ce7bb845.jpg",
+"https://telegra.ph/file/4095db3a6befdc88b02e3.jpg",
+"https://telegra.ph/file/8c5367e4a2c7230332c73.jpg",
+"https://telegra.ph/file/1e8dd4b5b66788b242bd2.jpg"
+]
 db = Database(DB_URL, SESSION)
 
 @Client.on_message(filters.command("start"))
@@ -112,8 +144,8 @@ async def start(bot, message):
             )
         )
     else:
-        await message.reply_text(
-            START_MSG.format(message.from_user.first_name),
+        await message.reply_photo(photo=random.choice(PHOTO),
+            caption=START_MSG.format(message.from_user.mention),
             parse_mode="Markdown",
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
@@ -121,21 +153,17 @@ async def start(bot, message):
                     [
                         InlineKeyboardButton
                             (
-                                "🔎Search Here", switch_inline_query_current_chat=''
-                            ),
-                        InlineKeyboardButton
-                            (
-                                "🤖More Botz", url="https://t.me/MT_Botz"
+                                "⚡ WORKING GROUP ⚡", url="https://t.me/moviehubgroupp"
                             )
                     ],
                     [
                         InlineKeyboardButton
                             (
-                                "🤔Help", callback_data="help"
+                                "Help⚙️", callback_data="help"
                             ),
                         InlineKeyboardButton
                             (
-                                "About🤠", callback_data="about"
+                                "About😎", callback_data="about"
                             )
                     ]
                 ]
